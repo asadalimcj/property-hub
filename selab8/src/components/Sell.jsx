@@ -1,36 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import HouseLising from "./HouseListing";
 import Map from "./Map";
-import asad from "./asad.png";
+import axios from "axios";
 
 export default function Sell() {
-  const listings = [
-    {
-      price: "195,000",
-      bedrooms: 1,
-      bathrooms: 1,
-      size: 635,
-      address: "Address 1",
-      image: asad,
-    },
-    {
-      price: "195,000",
-      bedrooms: 1,
-      bathrooms: 1,
-      size: 635,
-      address: "Address 2",
-      image: asad,
-    },
-    {
-      price: "195,000",
-      bedrooms: 1,
-      bathrooms: 1,
-      size: 635,
-      address: "Address 3",
-      image: asad,
-    },
-  ];
+  const [houseList, setHouse] = useState([]);
+  useEffect(() => {
+    const getHouses = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4001/api/productlist"
+        );
+        setHouse(response.data);
+      } catch (error) {
+        console.log(error);
+        alert("Failed to fetch houses");
+      }
+    };
+    getHouses();
+  }, []);
 
   return (
     <div>
@@ -38,15 +27,15 @@ export default function Sell() {
       <div className="flex flex-col-reverse sm:flex-row justify-center m-4 gap-4">
         <Map />
         <div className="w-full md:w-1/2 flex flex-row flex-wrap gap-4 justify-center">
-          {listings.map((listing, index) => (
+          {houseList.map((listing, index) => (
             <HouseLising
               key={index}
-              price={listing.price}
-              bedrooms={listing.bedrooms}
-              bathrooms={listing.bathrooms}
-              size={listing.size}
-              address={listing.address}
-              image={listing.image}
+              price={listing.Price}
+              bedrooms={listing.Bedrooms}
+              bathrooms={listing.Bathrooms}
+              size={listing.SquareFeet}
+              address={listing.Address}
+              image={listing.Image}
             />
           ))}
         </div>
