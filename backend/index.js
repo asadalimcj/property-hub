@@ -14,7 +14,7 @@ app.use(cors());
 // })
 
 app.use('/user', require('./Routes/createuser'));
-app.use('/products', require('./Routes/createproducts'));
+app.use('/api', require('./Routes/HouseData'));
 
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);
