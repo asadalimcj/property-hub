@@ -17,7 +17,7 @@ export default function Navbar() {
         <Link className="text-black no-underline font-bold" to="/">
           Rent
         </Link>
-        <Link className="text-black no-underline font-bold" to="/rent">
+        <Link className="text-black no-underline font-bold" to="/sell">
           Sell
         </Link>
         {email ? (

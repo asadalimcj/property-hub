@@ -4,7 +4,7 @@ import "./index.css";
 import ApiData from "./components/ApiData";
 import Home from "./components/Home";
 import Products from "./components/Products";
-import Rent from "./components/Rent"
+import Sell from "./components/Sell";
 export default function App() {
   return (
     <BrowserRouter>
@@ -12,7 +12,7 @@ export default function App() {
       <Route path="/" element={<Home />}></Route>
         <Route path="/api" element={<ApiData />}></Route>
         <Route path="/product" element={<Products />}></Route>
-        <Route path="/rent" element={<Rent />}></Route>
+        <Route path="/sell" element={<Sell />}></Route>
 
       </Routes>
     </BrowserRouter>
