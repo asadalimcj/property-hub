@@ -10,7 +10,7 @@ export default function Sell() {
     const getHouses = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4001/api/productlist"
+          "https://property-hub-backend.vercel.app/api/productlist"
         );
         setHouse(response.data);
       } catch (error) {
