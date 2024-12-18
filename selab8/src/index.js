@@ -1,23 +1,16 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 import "./index.css";
-import ApiData from "./components/ApiData";
-import Home from "./components/Home";
-import Products from "./components/Products";
-import Sell from "./components/Sell";
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Home />}></Route>
-        <Route path="/api" element={<ApiData />}></Route>
-        <Route path="/product" element={<Products />}></Route>
-        <Route path="/sell" element={<Sell />}></Route>
-
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
+import { HousesData } from "./data/HousesData";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <HousesData>
+        <App />
+      </HousesData>
+    </BrowserRouter>
+  </React.StrictMode>
+);

@@ -9,12 +9,12 @@ export default function Navbar() {
   const [email, setEmail] = useState(localStorage.getItem("email"));
 
   return (
-    <div className="bg-white container flex items-center justify-between py-2">
+    <div className="bg-white flex items-center justify-between py-2 px-5">
       <div className="flex flex-row gap-5">
-        <Link className="text-black no-underline font-bold" to="/">
+        <Link className="text-black no-underline font-bold" to="/buy">
           Buy
         </Link>
-        <Link className="text-black no-underline font-bold" to="/">
+        <Link className="text-black no-underline font-bold" to="/rent">
           Rent
         </Link>
         <Link className="text-black no-underline font-bold" to="/sell">

@@ -1,18 +1,22 @@
-// App.js
-import React, { useState } from 'react';
-import ApiData from "./components/ApiData";
-import Home from "./components/Home";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom'; // No BrowserRouter here
+import Home from './components/Home';
+import Sell from './components/Sell';
+import Rent from './components/Rent';
+import Buy from './components/Buy';
 
 
-function App() {
-  
-
+const App = () => {
   return (
-    <div>
-      <Home />
-      <ApiData />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/sell" element={<Sell />} />
+      <Route path="/rent" element={<Rent />} />
+      <Route path="/buy" element={<Buy/>} />
+
+
+    </Routes>
   );
-}
+};
 
 export default App;

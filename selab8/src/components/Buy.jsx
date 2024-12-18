@@ -18,7 +18,7 @@ export default function Sell() {
             <p>No houses available for sale.</p>
           ) : (
             houseList
-              .filter((listing) => listing.catagoryName === "sell")
+              .filter((listing) => listing.catagoryName === "buy")
               .map((listing, index) => (
                 <HouseListing
                   key={index}
