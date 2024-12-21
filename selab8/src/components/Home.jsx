@@ -10,6 +10,7 @@ const data = [
     image:
       "https://www.zillowstatic.com/bedrock/app/uploads/sites/5/2024/04/homepage-spot-agent-lg-1.webp",
     button: "Browse Homes",
+    url:"/buy",
   },
   {
     title: "Sell a home",
@@ -18,6 +19,7 @@ const data = [
     image:
       "https://www.zillowstatic.com/bedrock/app/uploads/sites/5/2024/04/homepage-spot-sell-lg-1.webp",
     button: "See Your Options",
+    url:"/sell",
   },
   {
     title: "Rent A Home",
@@ -26,6 +28,7 @@ const data = [
     image:
       "https://www.zillowstatic.com/bedrock/app/uploads/sites/5/2024/04/homepage-spot-agent-lg-1.webp",
     button: "Find rentals",
+    url:"/rent",
   },
 ];
 
@@ -43,6 +46,7 @@ export default function Home() {
               description={service.description}
               image={service.image}
               button={service.button}
+              url={service.url}
             />
           ))}
         </div>

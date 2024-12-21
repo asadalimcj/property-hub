@@ -1,12 +1,18 @@
 const mongoose = require("mongoose");
 
 const HouseList = new mongoose.Schema({
-  Image: { type: String, required: true },
-  price: { type: Number, required: true },
-  Bedrooms: { type: String, required: true },
-  Bathrooms: { type: String, required: true },
-  squareFeet: { type: Number, required: true },
+  Images: { type: [String], required: true },
   Address: { type: String, required: true },
+  Price: { type: String, required: true },
+  Bedrooms: { type: Number, required: true },
+  Bathrooms: { type: Number, required: true },
+  Ares: { type: String, required: true }, 
+  AboutHome: { type: String, required: true },
+  Email: { type: String, required: true },
+  catagoryName: { type: String, default: "buy", enum: ["buy", "rent", "sell"] }, 
 });
 
 module.exports = mongoose.model("House", HouseList);
+
+
+

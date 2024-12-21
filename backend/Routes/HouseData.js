@@ -14,11 +14,16 @@ router.get("/productlist", async (req, res) => {
     
 });
 
-
-
-
-
-
+router.post('/upload', async(req, res) => {
+  try {
+    const house = new productList(req.body);
+    await house.save();
+    res.status(201).json({ success: true, message: "Product uploaded successfully" });
+  } catch (error) {
+    console.error("Error in uploading product", error);
+    res.status(500).json({ success: false });
+  }
+})
 
 router.put("/updateproduct/:id", async (req, res) => {
     const updatedProduct = await product.findByIdAndUpdate(
