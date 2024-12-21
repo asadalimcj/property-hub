@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Navbar";
 import HouseListing from "./HouseListing";
 import Map from "./Map";
 import { DataContext } from "../data/HousesData";
+import Detail from "./Detail";
+import Modal from "./Modal";
 
 export default function Sell() {
   const houseList = useContext(DataContext);
-  console.log("House List from Context:", houseList);
+  const [selectedHouse, setSelectedHouse] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
+
+  const email = localStorage.getItem("email");
+
+  const openModal = (house) => {
+    setSelectedHouse(house);
+  };
 
   return (
     <div className="flex flex-col">
@@ -22,17 +31,31 @@ export default function Sell() {
               .map((listing, index) => (
                 <HouseListing
                   key={index}
+                  onClick={() => openModal(listing)}
                   price={listing.Price}
                   bedrooms={listing.Bedrooms}
                   bathrooms={listing.Bathrooms}
-                  size={listing["Square Feet"]} 
+                  size={listing["Ares (Square Feet)"]}
                   address={listing.Address}
-                  image={listing.Image}
+                  image={listing.Images?.[0]}
                 />
               ))
           )}
         </div>
       </div>
+      <Detail
+        show={!!selectedHouse}
+        onHide={() => {
+          setSelectedHouse(null);
+          setModalShow(true);
+        }}
+        house={selectedHouse}
+      />
+      {email ? (
+        <h1>hello</h1>
+      ) : (
+        <Modal show={modalShow} onHide={() => setModalShow(false)} />
+      )}
     </div>
   );
 }

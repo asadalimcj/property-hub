@@ -11,6 +11,9 @@ export default function Navbar() {
   return (
     <div className="bg-white flex items-center justify-between py-2 px-5">
       <div className="flex flex-row gap-5">
+      <Link className="text-black no-underline font-bold" to="/">
+          Home
+        </Link>
         <Link className="text-black no-underline font-bold" to="/buy">
           Buy
         </Link>

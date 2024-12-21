@@ -13,7 +13,7 @@ const Services = (props) => {
       </div>
       <h2 className="text-xl font-bold text-gray-900 mb-2">{props.title}</h2>
       <p className="text-gray-600 text-center mb-4">{props.description}</p>
-      <Link to="" className="border no-underline border-gray-400 text-blue-700 font-bold py-2 px-4 rounded-lg hover:bg-blue-200 focus:outline-none focus:ring focus:ring-gray-300">
+      <Link to={props.url} className="border no-underline border-gray-400 text-blue-700 font-bold py-2 px-4 rounded-lg hover:bg-blue-200 focus:outline-none focus:ring focus:ring-gray-300">
         {props.button}
       </Link>
     </div>
