@@ -63,7 +63,7 @@ export default function SellForm(props) {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:4001/api/upload",
+        "https://property-hub-backend.vercel.app/api/upload",
         formData
       );
       if (res.status === 200) {
