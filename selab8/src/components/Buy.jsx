@@ -42,7 +42,7 @@ export default function Sell() {
 
       // Send POST request to the backend
       const res = await axios.post(
-        "http://localhost:4001/api/buy",
+        "https://property-hub-backend.vercel.app/api/buy",
         BuyHouseData
       );
 
@@ -64,7 +64,7 @@ export default function Sell() {
   };
   const filteredHouseList = houseList.filter(
     (listing) =>
-      (listing.catagoryName === "rent" || listing.catagoryName === "sell") &&
+      (listing.catagoryName === "buy" || listing.catagoryName === "sell") &&
       listing.Address.toLowerCase().includes(searchTerm)
   );
   return (
