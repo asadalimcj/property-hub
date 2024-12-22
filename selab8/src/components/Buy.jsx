@@ -42,7 +42,7 @@ export default function Sell() {
 
       // Send POST request to the backend
       const res = await axios.post(
-        "https://property-hub-backend.vercel.app/api/buy",
+        "http://localhost:4001/api/buy",
         BuyHouseData
       );
 
