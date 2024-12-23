@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 
 export default function MyVerticallyCenteredModal({ house, onHide, ...props }) {
-  if (!house) return null;
+  if (!house) return null; // Ensure house data is available
 
   return (
     <Modal
