@@ -20,45 +20,50 @@ export default function Sell() {
   };
   const BuyHouse = async (House) => {
     try {
-      // Log the House object to see what data it contains
       console.log("Selected house:", House);
 
-      // Prepare the house data in the correct format as per the schema
       const BuyHouseData = {
-        email: email, // Get email from localStorage
+        email: email,
         house: {
-          // id: House._id,
           Images: House.Images,
           Address: House.Address,
           Price: House.Price,
           Bedrooms: House.Bedrooms,
           Bathrooms: House.Bathrooms,
-          Ares: House["Ares (Square Feet)"], // Ensure this matches the actual field name
-          AboutHome: House["About Home"],
+          catagoryName: House.catagoryName,
         },
       };
 
-      console.log("BuyHouseData:", BuyHouseData); // Log the final data object
+      console.log("BuyHouseData:", BuyHouseData);
 
-      // Send POST request to the backend
+      // Send POST request to the backend for purchasing
       const res = await axios.post(
         "http://localhost:4001/api/buy",
         BuyHouseData
       );
 
-      // Handle the response
       if (res.status === 200) {
         alert("Purchase successful!");
-        setSelectedHouse(null);
+
+        // Delete the house from the database
+        const deleteRes = await axios.delete(
+          `http://localhost:4001/api/houses/${House._id}`
+        );
+        if (deleteRes.status === 200) {
+          alert("House deleted successfully!");
+          setSelectedHouse(null);
+        } else {
+          alert("Failed to delete the house.");
+        }
       } else {
         alert("Error purchasing house!");
-        setSelectedHouse(null);
       }
     } catch (error) {
       console.error("Error buying house:", error);
       alert("An error occurred. Please try again.");
     }
   };
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
   };

@@ -36,10 +36,16 @@ router.put("/updateproduct/:id", async (req, res) => {
     .json({ success: true, message: "Product Updated Successfully" });
 });
 
-router.delete("/deleteProduct", async (req, res) => {
-  const { id } = req.body;
-  await product.findByIdAndDelete(id);
-  res.json({ success: true, message: "Product Deleted" });
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await productList.findByIdAndDelete(id);
+    res.json({ success: true, message: "Product Deleted" });
+  } catch (error) {
+    console.error('Error deleting house:', error);
+    res.status(500).send({ message: 'Error deleting house!' });
+  }
+ 
 });
 router.post("/createproduct", async (req, res) => {
   const newProduct = new product(req.body);

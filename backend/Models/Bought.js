@@ -12,8 +12,8 @@ const Bought = new mongoose.Schema({
         Price: { type: String, required: true },
         Bedrooms: { type: Number, required: true },
         Bathrooms: { type: Number, required: true },
-        Ares: { type: String, required: true }, 
-        AboutHome: { type: String, required: true },
+        catagoryName: { type: String, required: true}
+
     }
 })
 

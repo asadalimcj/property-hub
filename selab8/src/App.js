@@ -4,6 +4,7 @@ import Home from './components/Home';
 // import Sell from './components/Sell';
 import Rent from './components/Rent';
 import Buy from './components/Buy';
+import History from './components/History';
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       {/* <Route path="/sell" element={<Sell />} /> */}
       <Route path="/rent" element={<Rent />} />
       <Route path="/buy" element={<Buy/>} />
+      <Route path="/history" element={<History/>} />
 
 
     </Routes>

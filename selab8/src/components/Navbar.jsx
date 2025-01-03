@@ -7,13 +7,13 @@ import SellForm from "./SellForm";
 export default function Navbar() {
   const [modalShow, setModalShow] = useState(false);
   const [email, setEmail] = useState(localStorage.getItem("email"));
-  const [showsSellForm, setSellForm] = useState(false);
+  const [showSellForm, setShowSellForm] = useState(false);
 
   const handleSellClick = () => {
     if (email) {
-      setSellForm(true);
+      setShowSellForm(true);
     } else {
-      setModalShow(true); // Open the modal if email is not set
+      setModalShow(true);
     }
   };
 
@@ -29,35 +29,47 @@ export default function Navbar() {
         <Link className="text-black no-underline font-bold" to="/rent">
           Rent
         </Link>
-        <button
-          className="text-black no-underline font-bold bg-transparent border-none"
+        <Link
+          className="text-black no-underline font-bold"
           onClick={handleSellClick}
         >
           Sell Home
-        </button>
+        </Link>
+
+        {/* SellForm Modal */}
+        <SellForm show={showSellForm} onHide={() => setShowSellForm(false)} />
+
+        {/* History Link */}
+        {email ? (
+          <Link className="text-black no-underline font-bold" to="/history">
+            History
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
-      <img src={RealEstate} alt="" height={60} width={60}></img>
 
-      {email && (
-        <SellForm show={showsSellForm} onHide={() => setSellForm(false)} />
-      )}
+      {/* Real Estate Logo */}
+      <img src={RealEstate} alt="" height={60} width={60} />
 
-      {/* Button to trigger the modal */}
+      {/* Sign In or Logout Button */}
       {email ? (
         <button
           onClick={() => {
             localStorage.removeItem("email");
-            setEmail(null); // Update state after removal
+            setEmail(null);
           }}
           className="text-gray-700 font-bold no-underline"
         >
-          Welcome, {email}
+          Logout
         </button>
       ) : (
         <button className="font-bold" onClick={() => setModalShow(true)}>
           Sign In
         </button>
       )}
+
+      {/* Login Modal */}
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
